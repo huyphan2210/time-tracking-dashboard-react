@@ -1,0 +1,29 @@
+.action {
+    display: grid;
+    border-radius: 1rem;
+    padding: 2rem;
+    background-color: var(--dark-blue);
+}
+    
+    .actionInfo {
+        /* width: 100%; */
+        align-self: flex-end;
+        border-radius: 1rem;
+    }
+
+    .title {
+        display: grid;
+        grid-template-columns: auto auto;
+    }
+
+        .title img {
+            align-self: center;
+            justify-self: end;
+        }
+
+        .hours h1 {
+            margin-block: 1rem;
+            font-size: 3rem;
+            font-weight: 300;
+        }
+
