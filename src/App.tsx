@@ -1,10 +1,53 @@
-import jeremy from './assets/images/image-jeremy.png'
-
-import { useState } from 'react'
-import Action from './components/Action'
+import { useEffect, useState } from 'react';
+import Action from './components/Action';
+import { ActionInterface } from './interface/action';
+import data from './data.json';
 import './App.css'
 
+import jeremy from './assets/images/image-jeremy.png';
+import workImg from './assets/images/icon-work.svg';
+import playImg from './assets/images/icon-play.svg';
+import studyImg from './assets/images/icon-study.svg';
+import exerciseImg from './assets/images/icon-exercise.svg';
+import socialImg from './assets/images/icon-social.svg';
+import selfCareImg from './assets/images/icon-self-care.svg';
+
 function App() {
+  const [period, setPeriod] = useState<'daily' | 'weekly' | 'monthly'>('daily');
+  const [actions, setActions] = useState<ActionInterface[]>();
+
+  const getActions = () => {
+    const newActions: ActionInterface[] = data.map(value => {
+        const actionImg = getActionImg(value.title)
+        return {
+          actionImg,
+          title: value.title,
+          hours: period === 'daily' ? value.timeframes.daily : period === 'weekly' ? value.timeframes.weekly : value.timeframes.monthly
+        }
+    })
+    setActions(newActions);
+  }
+  
+  const getActionImg = (title: string) => {
+    switch (title) {
+      case 'Work':
+        return workImg;
+      case 'Play':
+        return playImg;
+      case 'Study':
+        return studyImg;
+      case 'Exercise':
+        return exerciseImg;
+      case 'Social':
+        return socialImg;
+      default:
+        return selfCareImg;
+    }
+  }
+
+  useEffect(() => {
+    getActions();
+  }, [period])
 
   return (
     <div className='dashboard'>
@@ -17,64 +60,12 @@ function App() {
           </div>
         </div>
         <div className='period'>
-          <p>Daily</p>
-          <p>Weekly</p>
-          <p>Monthly</p>
+          <p onClick={() => setPeriod('daily')}>Daily</p>
+          <p onClick={() => setPeriod('weekly')}>Weekly</p>
+          <p onClick={() => setPeriod('monthly')}>Monthly</p>
         </div>
       </div>
-      <Action></Action>
-      <Action></Action>
-      <Action></Action>
-      <Action></Action>
-      <Action></Action>
-      <Action></Action>
-  {/* Work
-  5hrs <!-- daily -->
-  Previous - 7hrs <!-- daily -->
-  32hrs <!-- weekly -->
-  Previous - 36hrs <!-- weekly -->
-  103hrs <!-- monthly -->
-  Previous - 128hrs <!-- monthly -->
-
-  Play
-  1hr <!-- daily -->
-  Previous - 2hrs <!-- daily -->
-  10hrs <!-- weekly -->
-  Previous - 8hrs <!-- weekly -->
-  23hrs <!-- monthly -->
-  Previous - 29hrs <!-- monthly -->
-
-  Study
-  0hrs <!-- daily -->
-  Previous - 1hr <!-- daily -->
-  4hrs <!-- weekly -->
-  Previous - 7hrs <!-- weekly -->
-  13hrs <!-- monthly -->
-  Previous - 19hrs <!-- monthly -->
-
-  Exercise
-  1hr <!-- daily -->
-  Previous - 1hr <!-- daily -->
-  4hrs <!-- weekly -->
-  Previous - 5hrs <!-- weekly -->
-  11hrs <!-- monthly -->
-  Previous - 18hrs <!-- monthly -->
-
-  Social
-  1hr <!-- daily -->
-  Previous - 3hrs <!-- daily -->
-  5hrs <!-- weekly -->
-  Previous - 10hrs <!-- weekly -->
-  21hrs <!-- monthly -->
-  Previous - 23hrs <!-- monthly -->
-
-  Self Care
-  0hrs <!-- daily -->
-  Previous - 1hr <!-- daily -->
-  2hrs <!-- weekly -->
-  Previous - 2hrs <!-- weekly -->
-  7hrs <!-- monthly -->
-  Previous - 11hrs <!-- monthly --> */}
+      {actions?.map(action => <Action key={action.title} actionImg={action.actionImg} period={period === 'daily' ? 'day' : period.replace('ly', '')} title={action.title} curHours={action.hours.current} prevHours={action.hours.previous}></Action>)}
     </div>
   )
 }
