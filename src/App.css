@@ -7,8 +7,7 @@
 .dashboard {
     width: 100%;
     display: grid;
-    column-gap: 4%;
-    row-gap: 4%;
+    gap: 4%;
     grid-template-columns: 22% 22% 22% 22%;
     grid-template-areas: 
         'reportee work play study'
