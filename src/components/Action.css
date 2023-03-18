@@ -1,29 +1,77 @@
 .action {
-    display: grid;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
     border-radius: 1rem;
-    padding: 2rem;
-    background-color: var(--dark-blue);
+    background-color: hsl(43, 84%, 65%);
+    overflow: hidden;
 }
+    #Work {
+        background-color: hsl(15, 100%, 70%);
+    }
+    #Play {
+        background-color: hsl(195, 74%, 62%);
+    }
+    #Study {
+        background-color: hsl(348, 100%, 68%);
+    }
+    #Exercise {
+        background-color: hsl(145, 58%, 55%);
+    }
+    #Social {
+        background-color: hsl(264, 64%, 52%);
+    }
+
+        .action img {
+            position: absolute;
+            top: 0;
+            right: 1rem;
+            filter: brightness(0.5);   
+            transform: translate(0, -10%); 
+        }
     
     .actionInfo {
-        /* width: 100%; */
-        align-self: flex-end;
+        position: relative;
+        z-index: 1;
+        padding: 2rem;
+        background-color: var(--dark-blue);
         border-radius: 1rem;
     }
+        .actionInfo:hover {
+            cursor: pointer;
+            background-color: rgba(52, 57, 123, 255);
+        }
 
     .title {
         display: grid;
         grid-template-columns: auto auto;
     }
+        .title h2 {
+            margin-block: 0;
+        }
 
         .title img {
+            position: static;
             align-self: center;
             justify-self: end;
         }
+            .title img:hover {
+                cursor: pointer;
+                filter: contrast(4);
+            }
 
         .hours h1 {
             margin-block: 1rem;
             font-size: 3rem;
             font-weight: 300;
         }
+        .hours p {
+            color: var(--pale-blue);
+            margin-block-end: 0;
+        }
+
+            .hours p span {
+                text-transform: capitalize;
+            }
 
