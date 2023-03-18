@@ -22,7 +22,7 @@
             padding: 2rem;
             background-color: hsl(246, 80%, 60%);
             border-radius: 1rem;
-            height: calc(60% - 4rem);
+            min-height: calc(60% - 4rem);
         }
             .info img {
                 width: 30%;
@@ -36,6 +36,7 @@
                 color: var(--pale-blue);
             }
             .info h1 {
+                font-weight: 100;
                 margin-block-start: 1rem;
             }
         .period {
@@ -57,4 +58,37 @@
                 margin-block-end: 0;
             }
 
-    
+@media screen and (max-aspect-ratio: 1) {
+    .dashboard {
+        grid-template-columns: auto;
+        grid-template-areas: unset;
+        gap: unset;
+    }
+        .reportee {
+            grid-area: unset;
+            margin-block-end: 2rem;
+        }
+            .info {
+                display: grid;
+                grid-template-columns: 25% 75%;
+            }
+                .info img {
+                    width: 100%;
+                    margin-bottom: 0;
+                    align-self: center;
+                }
+                .info div {
+                    margin-left: 1rem;
+                    align-self: center;
+                }
+                .info h1 {
+                    font-size: 1.5rem;
+                    margin-block-end: 0;
+                }
+            .period {
+                flex-direction: row;
+            }
+                .period p {
+                    margin-block-start: 0
+                }
+}
