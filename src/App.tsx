@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Action from './components/Action';
-import { ActionInterface } from './interface/action';
+import { ActionInterface } from './interface/Action';
 import data from './data.json';
 import './App.css'
 
