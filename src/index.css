@@ -22,3 +22,13 @@ footer {
   position: fixed;
   bottom: 1vh;
 }
+
+@media screen and (max-aspect-ratio: 1) {
+  main {
+    aspect-ratio: auto;
+  }
+  footer {
+    position: static;
+    margin-bottom: 1vh;
+  }
+}
