@@ -64,7 +64,7 @@
         .hours h1 {
             margin-block: 1rem;
             font-size: 3rem;
-            font-weight: 300;
+            font-weight: 100;
         }
         .hours p {
             color: var(--pale-blue);
@@ -75,3 +75,48 @@
                 text-transform: capitalize;
             }
 
+@media screen and (max-aspect-ratio: 1) {
+    .action {
+        aspect-ratio: 1.8;
+        margin-block-end: 2rem;
+    }
+
+        .hours {
+            margin-block-start: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hours h1, .hours p {
+            margin-block: 0;
+        }
+
+        .hours p {
+            text-align: end;
+        }
+
+    @media screen and (max-width: 913px) {
+        .action {
+            aspect-ratio: 3;
+        }
+
+        @media screen and (max-width: 541px) {
+            .action {
+                aspect-ratio: 2;
+            }
+
+            @media screen and (max-width: 415px) {
+                .action {
+                    aspect-ratio: 1.6;
+                }
+        
+                @media screen and (max-width: 281px) {
+                    .action {
+                        aspect-ratio: 1.2;
+                    }
+                }
+            }
+        }
+    }
+}
