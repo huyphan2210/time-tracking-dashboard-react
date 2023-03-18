@@ -48,6 +48,7 @@
         grid-template-columns: auto auto;
     }
         .title h2 {
+            font-size: 1rem;
             margin-block: 0;
         }
 
